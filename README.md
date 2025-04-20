@@ -11,7 +11,7 @@ calling specific variables of the results struct.
 
 ## Creation:
 # Syntax
-`#RRGGBB`*result = coaxialDesignTool(geom, material, operating);*
+`rgb(9, 105, 218)` `*result = coaxialDesignTool(geom, material, operating);*
 
 # Description
 *function result = coaxialDesignTool(geom, material, operating)* creates a new coaxial cable design function called "result" and sets the radii, material properties, and operating frequency.
