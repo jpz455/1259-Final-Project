@@ -10,8 +10,8 @@ are then stored in a results struct. Finally, the characteristic impedance, alph
 calling specific variables of the results struct.
 
 Creation:
-
 Syntax
+
 result = coaxialDesignTool(geom, material, operating);
 
 Description
