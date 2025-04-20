@@ -10,6 +10,7 @@ distributed parameters, propogation constants and velocity, and finally characte
 are then stored in a results struct. Finally, the characteristic impedance, alpha, beta, and attenuation in dB/m amongst other results can be accessed by the user
 calling specific variables of the results struct.
 
+
 Creation:
 
 Syntax
@@ -20,6 +21,7 @@ Description
 
 function result = coaxialDesignTool(geom, material, operating) creates a new coaxial cable design function called "result" and sets the radii, material properties, and operating frequency.
 The user provided information is then used to perform calculations and the results can be accessed by calling the "results" struct's variables.
+
 
 Input Arguments
 
