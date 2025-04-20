@@ -15,7 +15,7 @@ calling specific variables of the results struct.
 
 ### Description
 *function result = coaxialDesignTool(geom, material, operating)* creates a new coaxial cable design object called "result" and sets the radii, material properties, and operating frequency.
-The user provided information is then used to perform calculations and the results can be accessed by calling the "results" struct's variables.
+The user provided information is then used to perform calculations and the results can be accessed by calling the object name's respective struct variables (i.e. result.gamma).
 
 
 ### Input Arguments
