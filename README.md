@@ -1,5 +1,5 @@
-### coaxialDesignTool Documentation
-# Coaxial Cable Design Model
+# coaxialDesignTool Documentation
+### Coaxial Cable Design Model
 
 ## Description
 The purpose of this design tool is to take inputs from the user (geometric radii, material permitivity, material conductivity, operating frequency and more) 
@@ -10,15 +10,15 @@ calling specific variables of the results struct.
 
 
 ## Creation:
-# Syntax
+### Syntax
 *result = coaxialDesignTool(geom, material, operating);*
 
-# Description
+### Description
 *function result = coaxialDesignTool(geom, material, operating)* creates a new coaxial cable design function called "result" and sets the radii, material properties, and operating frequency.
 The user provided information is then used to perform calculations and the results can be accessed by calling the "results" struct's variables.
 
 
-# Input Arguments
+### Input Arguments
 *geom* (scalar) - inner and outer radius, specified as a scalar in meters (m). The a component (geom.a) specifies the inner conductor radius and the b component (geom.b) specifies the outer
 radius.
 
