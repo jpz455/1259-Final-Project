@@ -14,14 +14,15 @@ calling specific variables of the results struct.
 *result = coaxialDesignTool(geom, material, operating);*
 
 ### Description
-*function result = coaxialDesignTool(geom, material, operating)* creates a new coaxial cable design function called "result" and sets the radii, material properties, and operating frequency.
+*function result = coaxialDesignTool(geom, material, operating)* creates a new coaxial cable design object called "result" and sets the radii, material properties, and operating frequency.
 The user provided information is then used to perform calculations and the results can be accessed by calling the "results" struct's variables.
 
 
 ### Input Arguments
-*geom* (scalar) - inner and outer radius, specified as a scalar in meters (m). The a component (geom.a) specifies the inner conductor radius and the b component (geom.b) specifies the outer
+*geom* (scalar) - inner radius (*a*) and outer radius (*b*), specified as a scalar in meters (m). The *a* component (*geom.a*) specifies the inner conductor radius and the *b* component (*geom.b*) specifies the outer
 radius.
 
-*material* (scalar) - relative permitivity (*er*), loss angle/dissipation factor (*tan_delta*), conductor conductivity (*sigma_c*) and dielectric conductivity (*sigma_d*), and operating frequency (*f*).
-All variables are scalars with respective units: *er* - (F/m), *tan_delta* - (radians), *sigma_c* and *sigma_d* - (S/m), *f* - (Hz)
+*material* (scalar) - relative permitivity (*er*), loss angle/dissipation factor (*tan_delta*), conductor conductivity (*sigma_c*) and dielectric conductivity (*sigma_d*).
+All variables are scalars with respective units: *er* - (F/m), *tan_delta* - (radians), *sigma_c* and *sigma_d* - (S/m).
 
+*operating* (scalar) - operating frequency (*f*), specified as a scalar in Hertz (Hz).
