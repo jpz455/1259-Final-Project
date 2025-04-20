@@ -10,7 +10,7 @@ calling specific variables of the results struct.
 
 
 ## Creation:
-# Syntax\
+# Syntax
 result = coaxialDesignTool(geom, material, operating);
 
 # Description
