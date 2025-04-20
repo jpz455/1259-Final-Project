@@ -19,4 +19,4 @@ The user provided information is then used to perform calculations and the resul
 Input Arguments
 geom (scalar) - inner and outer radius, specified as a scalar in meters (m). The a component (geom.a) specifies the inner conductor radius and the b component (geom.b) specifies the outer
 radius.
-material (scalar) - relative permitivity (er), loss angle/dissipation factor (tan_delta), 
+material (scalar) - relative permitivity (er), loss angle/dissipation factor (tan_delta), conductivity
