@@ -38,7 +38,7 @@ Calculated based on the following equation: R = (1/2\*pi)\*((1/a)+(1/b))\*sqrt((
 <ins>*L_per_m*</ins> (scalar) - inductance distributed parameter in Henrys per meter (H/m).  
 Calculated based on the following equation: L = (mu / (2 * pi)) * log(b / a)
 
-<ins>*C_per_m*</ins> (scalar) - capacitance distributed parameter in Farads per meter (F/m). 
+<ins>*C_per_m*</ins> (scalar) - capacitance distributed parameter in Farads per meter (F/m).  
 Calculated based on the following equation: C = (2 * pi * eps) / log(b / a)
 
 <ins>*G_per_m*</ins> (scalar) - conductance distributed paramter in Siemens per meter (S/m).  
