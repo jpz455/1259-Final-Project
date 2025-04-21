@@ -1,5 +1,5 @@
 # coaxialDesignTool Documentation
-### Coaxial Cable Design Model :magnet:
+### :magnet: Coaxial Cable Design Model :magnet:
 
 ## Description:
 The purpose of this design tool is to take inputs from the user (geometric radii, material permitivity, material conductivity, operating frequency and more) 
