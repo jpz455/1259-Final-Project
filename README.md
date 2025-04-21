@@ -22,13 +22,13 @@ The user provided information is then used to perform calculations and the resul
 <ins>*geom*</ins> (scalar) - inner radius (*a*) and outer radius (*b*), specified as a scalar in meters (m). The *a* component (*geom.a*) specifies the inner conductor radius and the *b* component (*geom.b*) specifies the outer
 radius.
 
-*material* (scalar) - relative permitivity (*er*), loss angle/dissipation factor (*tan_delta*), conductor conductivity (*sigma_c*) and dielectric conductivity (*sigma_d*).
+<ins>*material*</ins> (scalar) - relative permitivity (*er*), loss angle/dissipation factor (*tan_delta*), conductor conductivity (*sigma_c*) and dielectric conductivity (*sigma_d*).
 All variables are scalars with respective units: *er* - (F/m), *tan_delta* - (radians), *sigma_c* and *sigma_d* - (S/m).
 
-*operating* (scalar) - operating frequency (*f*), specified as a scalar in Hertz (Hz).
+<ins>*operating*</ins> (scalar) - operating frequency (*f*), specified as a scalar in Hertz (Hz).
 
 ### Output Arguments
 All output arguments are accessed through the "*object_name.variable*" results struct (i.e. beta = result.beta).
 
-*R_per_m* (scalar) - resistance distributed paramter in Ohms per meter (ohms/m).  
+<ins>*R_per_m*</ins> (scalar) - resistance distributed paramter in Ohms per meter (ohms/m).  
 Calculated based on the following equation: (1/2\*pi)\*((1/a)+(1/b))\*sqrt((pi\*f*mu)/sigma_c)
