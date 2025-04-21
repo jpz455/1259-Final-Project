@@ -97,8 +97,8 @@ The user would then create a new object as follows to perform the built-in calcu
 *result = coaxialDesignTool(geom, material, operating);*
 
 The user can then choose to display the outputs they desire. For example if they wanted the characteristic impedance, attenuation constant,  
-*phase constant, and cable attenuation in dB/m they would use code such as the following to display it:  
-disp(result.Z0_dist)  
+phase constant, and cable attenuation in dB/m they would use code such as the following to display it:  
+*disp(result.Z0_dist)  
 disp(result.alpha)  
 disp(result.beta)  
 fprintf('Attenuation: %.4f dB/m\n', result.alpha_dB_per_m);*  
