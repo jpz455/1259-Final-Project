@@ -44,6 +44,25 @@ Calculated based on the following equation: C = (2 * pi * eps) / log(b / a).
 <ins>*G_per_m*</ins> (scalar) - conductance distributed paramter in Siemens per meter (S/m).  
 Caculated based on the following equation: G = (2 * pi * sigma_d) / log(b / a).
 
+#### Propogation Constant
+
+<ins>*gamma*</ins> (scalar) - complex propagation constant in units of inverse meters (1/m).  
+Calculated based on the following equation: gamma = sqrt((R + 1j * omega * L) * (G + 1j * omega * C)).
+
+<ins>*alpha*</ins> (scalar) - attenuation constant; measure of how fast the signal attenuates (loses amplitude) in units of Nepers per meter (Np/m).  
+Calculated based on the following equation: alpha = real(gamma).
+
+<ins>*beta*</ins> (scalar) - phase constant; measure of how quickly the signal's phase rotates in units of radians per meter (rad/m).  
+Calculated based on the following equation: beta = imag(gamma).
+
+<ins>*alpha_dB_per_m*</ins> (scalar) - attenuation constant converted from units of Nepers per meter to units of decibels per meter (dB/m).  
+Calculated based on the following equation: alpha_dB_per_m = 8.686 * alpha.
+
+#### Propagation Velocity
+
+<ins>*u_p*</ins> (scalar) - propagation velocity of a wave down a cable with losses in units of meters per second (m/s).  
+Calculated based on the following equation: u_p = omega/beta.
+
 #### Characteristic Impedance (lossy)
 
 <ins>*Z0_dist*</ins> (scalar) - lossy characteristic impedance in Ohms (ohms).  
@@ -60,10 +79,4 @@ Calculated based on the following equation: beta_lossless = omega * sqrt(L * C).
 <ins>*u_p_lossless*</ins> (vector) - propagation velocity of a wave down a lossless cable with R = 0 and G = 0 in units of meters per second (m/s).  
 Calculated based on the following equation:  u_p_lossless = 1 / sqrt(L * C).
 
-#### Propogation Constant
 
-<ins>*gamma*</ins> (scalar) - complex propagation constant in units of inverse meters (1/m).  
-Calculated based on the following equation: gamma = sqrt((R + 1j * omega * L) * (G + 1j * omega * C)).
-
-<ins>*alpha*</ins> (scalar) - attenuation constant; a measure of how fast the signal attenuates (loses amplitude) in units of Nepers per meter (Np/m).  
-Calculated based on the following equation: alpha = real(gamma).
