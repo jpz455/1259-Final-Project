@@ -44,5 +44,10 @@ Calculated based on the following equation: C = (2 * pi * eps) / log(b / a).
 <ins>*G_per_m*</ins> (scalar) - conductance distributed paramter in Siemens per meter (S/m).  
 Caculated based on the following equation: G = (2 * pi * sigma_d) / log(b / a).
 
+#### Characteristic Impedance (lossy)
+
 <ins>*Z0_dist*</ins> (scalar) - lossy characteristic impedance in Ohms (ohms).  
 Calculated based on the following equation: Z0_dist = sqrt((R + 1j * omega * L) / (G + 1j * omega * C)).
+
+#### Characteristic Impedance (lossless)
+
