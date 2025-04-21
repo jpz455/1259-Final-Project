@@ -57,5 +57,13 @@ Calculated based on the following equation: Z0_lossless = sqrt(L / C).
 <ins>*beta_lossless*</ins> (scalar) - Beta value for a lossless cable in Radians per meter (rad/m).  
 Calculated based on the following equation: beta_lossless = omega * sqrt(L * C).
 
-<ins>*u_p_lossless*</ins> (scalar) - propagation velocity of a wave down a lossless cable with R = 0 and G = 0 in units of meters per second (m/s).  
+<ins>*u_p_lossless*</ins> (vector) - propagation velocity of a wave down a lossless cable with R = 0 and G = 0 in units of meters per second (m/s).  
 Calculated based on the following equation:  u_p_lossless = 1 / sqrt(L * C).
+
+#### Propogation Constant
+
+<ins>*gamma*</ins> (scalar) - complex propagation constant in units of inverse meters (1/m).  
+Calculated based on the following equation: gamma = sqrt((R + 1j * omega * L) * (G + 1j * omega * C)).
+
+<ins>*alpha*</ins> (scalar) - attenuation constant; a measure of how fast the signal attenuates (loses amplitude) per meter in units of Nepers per meter (Np/m).
+Calculated based on the following equation: alpha = real(gamma).
