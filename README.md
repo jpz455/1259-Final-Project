@@ -54,8 +54,8 @@ Calculated based on the following equation: Z0_dist = sqrt((R + 1j * omega * L) 
 <ins>*Z0_lossless*</ins> (scalar) - lossless characteristic impedance in Ohms (ohms).  
 Calculated based on the following equation: Z0_lossless = sqrt(L / C).
 
-<ins>*beta_lossless*</ins> (scalar) - Beta value for a lossless cable in Radians per meter (rad/m).
+<ins>*beta_lossless*</ins> (scalar) - Beta value for a lossless cable in Radians per meter (rad/m).  
 Calculated based on the following equation: beta_lossless = omega * sqrt(L * C).
 
-<ins>*u_p_lossless*</ins> (scalar) - propagation velocity of a wave down a lossless cable with R = 0 and G = 0 in units of meters per second (m/s).
+<ins>*u_p_lossless*</ins> (scalar) - propagation velocity of a wave down a lossless cable with R = 0 and G = 0 in units of meters per second (m/s).  
 Calculated based on the following equation:  u_p_lossless = 1 / sqrt(L * C).
