@@ -26,3 +26,9 @@ radius.
 All variables are scalars with respective units: *er* - (F/m), *tan_delta* - (radians), *sigma_c* and *sigma_d* - (S/m).
 
 *operating* (scalar) - operating frequency (*f*), specified as a scalar in Hertz (Hz).
+
+### Output Arguments
+All output arguments are accessed through the "*object_name.variable*" results struct (i.e. beta = result.beta).
+
+*R_per_m* (scalar) - resistance distributed paramter in Ohms per meter (ohms/m). 
+Calculated based on the following equation: (1/2\*pi)\*((1/a)+(1/b))\*sqrt((pi\*f*mu)/sigma_c)
