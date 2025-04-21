@@ -2,7 +2,7 @@
 ### :magnet: Coaxial Cable Design Model :magnet:
 
 ## Description:
-The purpose of this design tool is to take inputs from the user (geometric radii, material permitivity, material conductivity, operating frequency and more) 
+The purpose of this design tool is to take inputs from the user (geometric radii, material permittivity, material conductivity, operating frequency and more) 
 to calculate and determine information that would be useful for the design and fabrication of a coaxial cable. Once the function receives inputs, it will calculate
 distributed parameters, propogation constants and velocity, and finally characteristic impedances for both lossy or lossless cables. The results of the calculations
 are then stored in a results struct. Finally, the characteristic impedance, alpha, beta, and attenuation in dB/m amongst other results can be accessed by the user
@@ -22,13 +22,24 @@ The user provided information is then used to perform calculations and the resul
 <ins>*geom*</ins> (struct, scalar) - inner radius (*a*) and outer radius (*b*), specified as a scalar in meters (m). The *a* component (*geom.a*) specifies the inner conductor radius and the *b* component (*geom.b*) specifies the outer
 radius.
 
-<ins>*material*</ins> (struct, scalar) - relative permitivity (*er*), loss angle/dissipation factor (*tan_delta*), conductor conductivity (*sigma_c*) and dielectric conductivity (*sigma_d*).
+<ins>*material*</ins> (struct, scalar) - relative permittivity (*er*), loss angle/dissipation factor (*tan_delta*), conductor conductivity (*sigma_c*) and dielectric conductivity (*sigma_d*).
 All variables are scalars with respective units: *er* - (F/m), *tan_delta* - (radians), *sigma_c* and *sigma_d* - (S/m).
 
 <ins>*operating*</ins> (struct, scalar) - operating frequency (*f*), specified as a scalar in Hertz (Hz).
 
 ### Output Arguments
 All output arguments are accessed through the "*object_name.variable*" results struct (i.e. beta = result.beta).
+
+#### Constants and Derived Constants
+
+<ins>*mu0*</ins> (scalar) - permeability of free space in units of Henrys per meter (H/m).  
+Taken to be mu0 = 4 * π * 1e-7.
+
+<ins>*eps0*</ins> (scalar) - permittivity of free space; measures ability of a vacuum to allow electric field lines to pass through it, in units of Farads per meter (F/m).  
+Taken to be eps0 = 8.854e-12.
+
+<ins>*mu_r*</ins> (scalar) - relative permeability of material; measure of how easily a material can support the formation of a magnetic field within itself (unitless).  
+Assumed to have  mu_r = 1 (non-magnetic materials).
 
 #### Distributed Parameters
 
@@ -81,7 +92,7 @@ Calculated based on the following equation:  u_p_lossless = 1 / sqrt(L * C).
 
 ### Examples
 
-<ins>Example 1:</ins> take a coaxial cable with inner radius 0.001m, outer radius 0.005m, relative permitivity 2.3 F/m, a loss tangent of 0.0002 radians,  
+<ins>Example 1:</ins> take a coaxial cable with inner radius 0.001m, outer radius 0.005m, relative permittivity 2.3 F/m, a loss tangent of 0.0002 radians,  
 a conductor conducitivity of 5.8e7 S/m, and no dielectric conductivity (0 S/m) operating at a frequency of 1 GHz.
 
 The user would set the following variables in the MATLAB script:  
@@ -112,3 +123,7 @@ fprintf('Attenuation: %.4f dB/m\n', result.alpha_dB_per_m);*
    31.7850
 
 Attenuation: 1.0614 dB/m
+
+### Limitations
+
+-Assumes that non-magnetic materials are used for relative permeability of materials (mu_r = 1)
