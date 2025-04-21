@@ -33,7 +33,7 @@ All output arguments are accessed through the "*object_name.variable*" results s
 #### Distributed Parameters
 
 <ins>*R_per_m*</ins> (scalar) - resistance distributed paramter in Ohms per meter (ohms/m).  
-Calculated based on the following equation: R = (1/2\*pi)\*((1/a)+(1/b))\*sqrt((pi\*f*mu)/sigma_c).
+Calculated based on the following equation: R = (1/2 * pi) * ((1/a) + (1/b)) * sqrt((pi * f * mu) / sigma_c).
 
 <ins>*L_per_m*</ins> (scalar) - inductance distributed parameter in Henrys per meter (H/m).  
 Calculated based on the following equation: L = (mu / (2 * pi)) * log(b / a).
