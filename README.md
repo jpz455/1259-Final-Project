@@ -30,7 +30,7 @@ All variables are scalars with respective units: *er* - (F/m), *tan_delta* - (ra
 ### Output Arguments
 All output arguments are accessed through the "*object_name.variable*" results struct (i.e. beta = result.beta).
 
-## Distributed Parameters
+#### Distributed Parameters
 
 <ins>*R_per_m*</ins> (scalar) - resistance distributed paramter in Ohms per meter (ohms/m).  
 Calculated based on the following equation: R = (1/2\*pi)\*((1/a)+(1/b))\*sqrt((pi\*f*mu)/sigma_c)
