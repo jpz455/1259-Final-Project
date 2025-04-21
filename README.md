@@ -79,4 +79,19 @@ Calculated based on the following equation: beta_lossless = omega * sqrt(L * C).
 <ins>*u_p_lossless*</ins> (vector) - propagation velocity of a wave down a lossless cable with R = 0 and G = 0 in units of meters per second (m/s).  
 Calculated based on the following equation:  u_p_lossless = 1 / sqrt(L * C).
 
+### Examples
 
+<ins>Example 1:</ins> take a coaxial cable with inner radius 0.001m, outer radius 0.005m, relative permitivity 2.3 F/m, a loss tangent of 0.0002 radians,  
+a conductor conducitivity of 5.8e7 S/m, and no dielectric conductivity (0 S/m) operating at a frequency of 1 GHz.
+
+The user would set the following variables in the MATLAB script:  
+*geom.a = 0.001;  
+geom.b = 0.005;  
+material.er = 2.3;  
+material.tan_delta = 0.0002;  
+material.sigma_c = 5.8e7;  
+material.sigma_d = 0;  
+operating.f = 1e9;  % 1 GHz*  
+
+The user would then create a new object as follows:  
+*result = coaxialDesignTool(geom, material, operating);*
