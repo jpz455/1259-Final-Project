@@ -104,11 +104,11 @@ disp(result.beta)
 fprintf('Attenuation: %.4f dB/m\n', result.alpha_dB_per_m);*  
 
 <ins>MATLAB Terminal Output:</ins>  
-*>> CoaxialExample
+>> CoaxialExample
   63.6310 - 0.2446i
 
     0.1222
 
    31.7850
 
-Attenuation: 1.0614 dB/m*
+Attenuation: 1.0614 dB/m
