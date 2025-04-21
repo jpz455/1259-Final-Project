@@ -19,7 +19,7 @@ The user provided information is then used to perform calculations and the resul
 
 
 ### Input Arguments
-<ins>*geom*<\ins> (scalar) - inner radius (*a*) and outer radius (*b*), specified as a scalar in meters (m). The *a* component (*geom.a*) specifies the inner conductor radius and the *b* component (*geom.b*) specifies the outer
+<ins>*geom*</ins> (scalar) - inner radius (*a*) and outer radius (*b*), specified as a scalar in meters (m). The *a* component (*geom.a*) specifies the inner conductor radius and the *b* component (*geom.b*) specifies the outer
 radius.
 
 *material* (scalar) - relative permitivity (*er*), loss angle/dissipation factor (*tan_delta*), conductor conductivity (*sigma_c*) and dielectric conductivity (*sigma_d*).
