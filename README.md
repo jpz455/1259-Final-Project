@@ -19,13 +19,13 @@ The user provided information is then used to perform calculations and the resul
 
 
 ### Input Arguments
-<ins>*geom*</ins> (scalar) - inner radius (*a*) and outer radius (*b*), specified as a scalar in meters (m). The *a* component (*geom.a*) specifies the inner conductor radius and the *b* component (*geom.b*) specifies the outer
+<ins>*geom*</ins> (struct, scalar) - inner radius (*a*) and outer radius (*b*), specified as a scalar in meters (m). The *a* component (*geom.a*) specifies the inner conductor radius and the *b* component (*geom.b*) specifies the outer
 radius.
 
-<ins>*material*</ins> (scalar) - relative permitivity (*er*), loss angle/dissipation factor (*tan_delta*), conductor conductivity (*sigma_c*) and dielectric conductivity (*sigma_d*).
+<ins>*material*</ins> (struct, scalar) - relative permitivity (*er*), loss angle/dissipation factor (*tan_delta*), conductor conductivity (*sigma_c*) and dielectric conductivity (*sigma_d*).
 All variables are scalars with respective units: *er* - (F/m), *tan_delta* - (radians), *sigma_c* and *sigma_d* - (S/m).
 
-<ins>*operating*</ins> (scalar) - operating frequency (*f*), specified as a scalar in Hertz (Hz).
+<ins>*operating*</ins> (struct, scalar) - operating frequency (*f*), specified as a scalar in Hertz (Hz).
 
 ### Output Arguments
 All output arguments are accessed through the "*object_name.variable*" results struct (i.e. beta = result.beta).
@@ -93,5 +93,14 @@ material.sigma_c = 5.8e7;
 material.sigma_d = 0;  
 operating.f = 1e9;  % 1 GHz*  
 
-The user would then create a new object as follows:  
+The user would then create a new object as follows to perform the built-in calculations:  
 *result = coaxialDesignTool(geom, material, operating);*
+
+The user can then choose to display the outputs they desire. For example if they wanted the characteristic impedance, attenuation constant,  
+phase constant, and cable attenuation in dB/m they would use code such as the following to display it:  
+disp(result.Z0_dist)  
+disp(result.alpha)  
+disp(result.beta)  
+fprintf('Attenuation: %.4f dB/m\n', result.alpha_dB_per_m);  
+
+MATLAB Terminal Output: 
