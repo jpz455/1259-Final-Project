@@ -107,7 +107,7 @@ fprintf('Attenuation: %.4f dB/m\n', result.alpha_dB_per_m);*
 \>> CoaxialExample
  63.6310 - 0.2446i
 
-    0.1222
+   0.1222
 
    31.7850
 
