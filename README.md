@@ -65,5 +65,5 @@ Calculated based on the following equation:  u_p_lossless = 1 / sqrt(L * C).
 <ins>*gamma*</ins> (scalar) - complex propagation constant in units of inverse meters (1/m).  
 Calculated based on the following equation: gamma = sqrt((R + 1j * omega * L) * (G + 1j * omega * C)).
 
-<ins>*alpha*</ins> (scalar) - attenuation constant; a measure of how fast the signal attenuates (loses amplitude) per meter in units of Nepers per meter (Np/m).  
+<ins>*alpha*</ins> (scalar) - attenuation constant; a measure of how fast the signal attenuates (loses amplitude) in units of Nepers per meter (Np/m).  
 Calculated based on the following equation: alpha = real(gamma).
