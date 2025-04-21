@@ -42,7 +42,7 @@ Taken to be eps0 = 8.854e-12.
 <ins>*mu_r*</ins> (scalar) - relative permeability of material; measure of how easily a material can support the formation of a magnetic field within itself (unitless).  
 Assumed to have  mu_r = 1 (non-magnetic materials).
 
-<ins>*mu*</ins> (scalar) - absolute permeability of the material; in units of Henries per meter (H/m).
+<ins>*mu*</ins> (scalar) - absolute permeability of the material; in units of Henries per meter (H/m).  
 Calculated based on the following equation: mu = mu0 * mu_r;
 
 <ins>*eps*</ins> (scalar) - absolute premittivity of the material; in units of Farads per meter (F/m).  
