@@ -79,7 +79,7 @@ Calculated based on the following equation: beta_lossless = omega * sqrt(L * C).
 <ins>*u_p_lossless*</ins> (vector) - propagation velocity of a wave down a lossless cable with R = 0 and G = 0 in units of meters per second (m/s).  
 Calculated based on the following equation:  u_p_lossless = 1 / sqrt(L * C).
 
-### Examples
+## Examples
 
 <ins>Example 1:</ins> take a coaxial cable with inner radius 0.001m, outer radius 0.005m, relative permittivity 2.3 F/m, a loss tangent of 0.0002 radians,  
 a conductor conducitivity of 5.8e7 S/m, and no dielectric conductivity (0 S/m) operating at a frequency of 1 GHz.
@@ -113,7 +113,7 @@ fprintf('Attenuation: %.4f dB/m\n', result.alpha_dB_per_m);*
 
 Attenuation: 1.0614 dB/m
 
-### Limitations
+## Limitations
 
 -Assumes that non-magnetic materials are used for relative permeability of materials (mu_r = 1)
 
