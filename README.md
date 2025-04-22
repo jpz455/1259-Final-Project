@@ -105,11 +105,11 @@ fprintf('Attenuation: %.4f dB/m\n', result.alpha_dB_per_m);*
 
 <ins>MATLAB Terminal Output:</ins>  
 \>> CoaxialExample
- 63.6310 - 0.2446i :arrow_left: characteristic impedance (Z0_dist)
+ 63.6310 - 0.2446i :arrow_left: (characteristic impedance (Z0_dist))
 
-   0.1222  :arrow_left: aplha
+   0.1222  :arrow_left: (alpha)
 
-   31.7850  :arrow_left: beta
+   31.7850  :arrow_left: (beta)
 
 Attenuation: 1.0614 dB/m
 
