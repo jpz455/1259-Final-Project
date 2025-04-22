@@ -30,24 +30,6 @@ All variables are scalars with respective units: *er* - (F/m), *tan_delta* - (ra
 ### Output Arguments
 All output arguments are accessed through the "*object_name.variable*" results struct (i.e. beta = result.beta).
 
-#### Constants and Derived Constants
-The following are the constants that are used in the design tool's calculations as well as the values they're taken to be.
-
-<ins>*mu0*</ins> (scalar) - permeability of free space in units of Henries per meter (H/m).  
-Taken to be mu0 = 4 * π * 1e-7.
-
-<ins>*eps0*</ins> (scalar) - permittivity of free space; measures ability of a vacuum to allow electric field lines to pass through it, in units of Farads per meter (F/m).  
-Taken to be eps0 = 8.854e-12.
-
-<ins>*mu_r*</ins> (scalar) - relative permeability of material; measure of how easily a material can support the formation of a magnetic field within itself (unitless).  
-Assumed to have  mu_r = 1 (non-magnetic materials).
-
-<ins>*mu*</ins> (scalar) - absolute permeability of the material; in units of Henries per meter (H/m).  
-Calculated based on the following equation: mu = mu0 * mu_r;
-
-<ins>*eps*</ins> (scalar) - absolute premittivity of the material; in units of Farads per meter (F/m).  
-Calculated based on the following equation: eps = eps0 * er;
-
 #### Distributed Parameters
 
 <ins>*R_per_m*</ins> (scalar) - resistance distributed paramter in Ohms per meter (ohms/m).  
@@ -134,3 +116,21 @@ Attenuation: 1.0614 dB/m
 ### Limitations
 
 -Assumes that non-magnetic materials are used for relative permeability of materials (mu_r = 1)
+
+### Constants and Derived Constants
+The following are the constants that are used in the design tool's calculations as well as the values they're taken to be.
+
+<ins>*mu0*</ins> (scalar) - permeability of free space in units of Henries per meter (H/m).  
+Taken to be mu0 = 4 * π * 1e-7.
+
+<ins>*eps0*</ins> (scalar) - permittivity of free space; measures ability of a vacuum to allow electric field lines to pass through it, in units of Farads per meter (F/m).  
+Taken to be eps0 = 8.854e-12.
+
+<ins>*mu_r*</ins> (scalar) - relative permeability of material; measure of how easily a material can support the formation of a magnetic field within itself (unitless).  
+Assumed to have  mu_r = 1 (non-magnetic materials).
+
+<ins>*mu*</ins> (scalar) - absolute permeability of the material; in units of Henries per meter (H/m).  
+Calculated based on the following equation: mu = mu0 * mu_r;
+
+<ins>*eps*</ins> (scalar) - absolute premittivity of the material; in units of Farads per meter (F/m).  
+Calculated based on the following equation: eps = eps0 * er;
