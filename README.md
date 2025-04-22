@@ -2,7 +2,7 @@
 ### :magnet: Coaxial Cable Design Model :magnet:
 
 ##### <ins>Authors:</ins>
-Jill Zitcovich, Josh Brositz, Anthony Spadafore, and Sean Van Allen
+Jill Zitcovich, Josh Brositz, Anthony Spadafore, and Sean Van Alen
 
 ## Description:
 The purpose of this design tool is to take inputs from the user (geometric radii, material permittivity, material conductivity, operating frequency and more) 
