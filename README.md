@@ -1,6 +1,9 @@
 # coaxialDesignTool Documentation
 ### :magnet: Coaxial Cable Design Model :magnet:
 
+##### Authors:
+Jill Zitcovich, Josh Brositz, Anthony Spadafore, and Sean Van Allen
+
 ## Description:
 The purpose of this design tool is to take inputs from the user (geometric radii, material permittivity, material conductivity, operating frequency and more) 
 to calculate and determine information that would be useful for the design and fabrication of a coaxial cable. Once the function receives inputs, it will calculate
