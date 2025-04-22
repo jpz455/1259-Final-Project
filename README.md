@@ -134,3 +134,7 @@ Calculated based on the following equation: mu = mu0 * mu_r;
 
 <ins>*eps*</ins> (scalar) - absolute premittivity of the material; in units of Farads per meter (F/m).  
 Calculated based on the following equation: eps = eps0 * er;
+
+## References
+
+-ECE 1259 Lecture Notes
