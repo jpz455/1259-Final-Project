@@ -1,7 +1,7 @@
 # coaxialDesignTool Documentation
 ### :magnet: Coaxial Cable Design Model :magnet:
 
-##### Authors:
+##### <ins>Authors:</ins>
 Jill Zitcovich, Josh Brositz, Anthony Spadafore, and Sean Van Allen
 
 ## Description:
