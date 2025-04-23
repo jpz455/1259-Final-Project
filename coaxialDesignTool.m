@@ -153,7 +153,7 @@ plotCoaxialBehavior(geom, material, f_range);
 
 
 % input load impedance for smith chart plotting
-ZL = 75 + 25j;  % Ohms
+ZL = 75 + 25j;  
 Z0 = result.Z0_dist;
 % Normalize and calculate reflection coefficient
 z = ZL / Z0;
@@ -161,7 +161,7 @@ Gamma = (z - 1) / (z + 1);
 
 % Plot on Smith Chart
 plotSmith(Gamma);
-% Given
+
 Z0 = result.Z0_dist;     
 ZL = 75 + 25j;           % load to match
 f = operating.f;
