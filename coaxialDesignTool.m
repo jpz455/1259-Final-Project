@@ -1,4 +1,4 @@
-function result = coaxialDesigTool(geom, material, operating)
+function result = coaxialDesignTool(geom, material, operating)
     % Constants
     mu0 = 4*pi*1e-7;
     eps0 = 8.854e-12;
@@ -71,7 +71,7 @@ function plotCoaxialBehavior(geom, material, f_range)
 
     for i = 1:n
         operating.f = f_range(i);
-        result = coaxialDesigTool(geom, material, operating);
+        result = coaxialDesignTool(geom, material, operating);
         alpha_dB(i) = result.alpha_dB_per_m;
         Z0_real(i) = real(result.Z0_dist);
         Z0_imag(i) = imag(result.Z0_dist);
@@ -140,7 +140,7 @@ material.sigma_c = 5.8e7;
 material.sigma_d = 0;
 operating.f = 1e9;  % 1 GHz
 
-result = coaxialDesigTool(geom, material, operating);
+result = coaxialDesignTool(geom, material, operating);
 
 disp(result.Z0_dist)
 disp(result.alpha)
