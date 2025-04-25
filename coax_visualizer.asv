@@ -1,0 +1,51 @@
+function coax_visualizer(geom, material, operating)
+
+    %https://stackoverflow.com/questions/29194004/how-to-plot-a-circle-in-matlab
+    
+    conductor_color = [0,0,0];
+    dielectric_color = [1,1,1];
+
+    delta = .001;
+
+    r1 = geom.b+delta;
+    r2 = geom.b;
+    r3 = geom.a;
+    
+    n = 1000;
+    
+    t = linspace(0,2*pi,n);
+    
+    x1 =  r1*sin(t);
+    y1 =  r1*cos(t);
+    
+    line(x1,y1)
+    fill(x1,y1,conductor_color)
+    hold on;
+   
+    x2 = r2*sin(t);
+    y2 = r2*cos(t);
+    
+    line(x2,y2)
+    fill(x2,y2,dielectric_color)
+
+    x3 = r3*sin(t);
+    y3 = r3*cos(t);
+    
+    line(x3,y3)
+    fill(x3,y3,conductor_color)
+
+    vertx1 = linspace(geom.b+delta*5,geom.b+delta*5,10);
+    verty1 = linspace(-geom.b-delta,geom.b+delta,10);
+    line(vertx1,verty1,"Color",'k')
+    
+    horz1x = linspace(-delta,delta,10);
+    horz1uy = linspace(geom.b+delta,geom.b+delta*5,10);
+    horz1dy = linspace(-geom.b-delta,geom.b+delta,10);
+    line(vertx1,verty1,"Color",'k')
+
+    vertx2 = linspace(geom.b+delta*3,geom.b+delta*3,10);
+    verty2 = linspace(-geom.a,geom.a,10);
+    line(vertx2,verty2,"Color",'k')
+
+    axis equal
+    set(gca,'visible','off')
