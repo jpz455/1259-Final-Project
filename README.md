@@ -108,5 +108,44 @@ Outputs:
 - Material and cable properties adapted from standard engineering datasheets
 
 ---
+Start
+  │
+  ▼
+Run `Test.m`
+  │
+  ▼
+┌────────────────────────────────────────┐
+│ Prompt: Choose Design or Verification  │
+└────────────────────────────────────────┘
+     │
+     ├──► 1. Design Your Own Cable
+     │        │
+     │        ▼
+     │   Input Cable Geometry, Materials, Operating Conditions
+     │        │
+     │        ▼
+     │   ┌───────────────────────────────────┐
+     │   │ Calculate Distributed Parameters  │
+     │   │ Characteristic Impedance           │
+     │   │ Propagation Constants, Wavelength  │
+     │   └───────────────────────────────────┘
+     │        │
+     │        ▼
+     │   Plot Coaxial Cross-Section
+     │   Plot Attenuation / Impedance / Wavelength
+     │   Plot Voltage Behavior
+     │   Plot Smith Chart (Load Impedance)
+     │   Suggest Shunt Capacitor for Matching
+     │
+     └──► 2. Verify with Catalog
+              │
+              ▼
+      Load `Coaxial Cable Catalog.csv`
+              │
+              ▼
+     For Each Cable:
+         - Calculate Properties
+         - Compare to Datasheet Values
+         - Report Percent Error
 
 
