@@ -44,9 +44,13 @@ if choice == 1
     disp(result.beta)
     fprintf('Attenuation: %.4f dB/m\n', result.alpha_dB_per_m);
 
+    % Plot Visualizer
+
+    coax_visualizer(geom, material, operating);
+
     % Plot Coaxial Behavior
     f_range = logspace(6, 10, 200); % 1 MHz to 10 GHz
-    plotCoaxialBehavior(geom, material, operating, f_range);
+    plotCoaxialBehavior(geom, material, operating, f_range)
 
     % Input Load Impedance for Smith Chart Plotting
     ZL = 75 + 25j;  

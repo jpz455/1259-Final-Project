@@ -63,6 +63,7 @@ function plotCoaxialBehavior(geom, material, operating, f_range)
     plot(lengths, attenuated_power, "Color", 'k');
     xlabel("Position along cable, meters")
     ylabel("P_{out}/P_{in}")
+    ylim([-.05,1.05])
     subplot(2,1,2)
     grid on;
     hold on;
