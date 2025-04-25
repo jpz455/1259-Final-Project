@@ -1,12 +1,16 @@
 function coax_visualizer(geom, material, operating)
 
+    %used below stack overflow page to plot circles
     %https://stackoverflow.com/questions/29194004/how-to-plot-a-circle-in-matlab
     
+    %assign plotting colors for conductor and dielectric
     conductor_color = [0,0,0];
     dielectric_color = [1,1,1];
-
-    delta = .001;
-
+    
+    %distance value for spacing figure
+    delta = .2*geom.b;
+    
+    %radii of circles to plot 
     r1 = geom.b+delta;
     r2 = geom.b;
     r3 = geom.a;
@@ -35,17 +39,33 @@ function coax_visualizer(geom, material, operating)
     fill(x3,y3,conductor_color)
 
     vertx1 = linspace(geom.b+delta*5,geom.b+delta*5,10);
-    verty1 = linspace(-geom.b-delta,geom.b+delta,10);
+    verty1 = linspace(-geom.b,geom.b,10);
     line(vertx1,verty1,"Color",'k')
     
-    horz1x = linspace(-delta,delta,10);
-    horz1uy = linspace(geom.b+delta,geom.b+delta*5,10);
-    horz1dy = linspace(-geom.b-delta,geom.b+delta,10);
-    line(vertx1,verty1,"Color",'k')
+    horz1x = linspace(geom.b+delta*4,geom.b+delta*6,10);
+    horz1uy = linspace(geom.b,geom.b,10);
+    horz1dy = linspace(-geom.b,-geom.b,10);
+    line(horz1x,horz1uy,"Color",'k')
+    line(horz1x,horz1dy,"Color",'k')
 
     vertx2 = linspace(geom.b+delta*3,geom.b+delta*3,10);
     verty2 = linspace(-geom.a,geom.a,10);
     line(vertx2,verty2,"Color",'k')
 
+    horz1x = linspace(geom.b+delta*2,geom.b+delta*4,10);
+    horz1uy = linspace(geom.a,geom.a,10);
+    horz1dy = linspace(-geom.a,-geom.a,10);
+    line(horz1x,horz1uy,"Color",'k')
+    line(horz1x,horz1dy,"Color",'k')
+
     axis equal
     set(gca,'visible','off')
+
+    text(geom.b+2.5*delta, geom.a+delta, ["in. diam = ", num2str(geom.a)])
+    text(geom.b+4.5*delta, geom.b+delta, ["out diam = ", num2str(geom.b)])
+
+    text(-geom.a-2*delta, 0, ["\epsilon = ", num2str(material.er)],"FontSize", 12)
+
+    text(0, geom.b+2*delta, "Coax Visualizer", "FontSize", 15)
+
+    
