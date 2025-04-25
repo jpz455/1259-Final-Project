@@ -5,7 +5,7 @@ Jillian Zitcovich, Josh Brositz, Anthony Spadafore, and Sean Van Alen
 
 ---
 
-## 📚 Description
+## Description
 
 This project provides a MATLAB-based interactive design tool for coaxial cables.  
 Users can either:
@@ -18,7 +18,7 @@ It also provides graphical outputs including Smith Charts, attenuation plots, an
 
 ---
 
-## 🚀 How to Use
+## How to Use
 
 1. Open `Test.m` in MATLAB.
 2. Run the script.
@@ -38,7 +38,7 @@ The program will automatically:
 
 ---
 
-## 📂 Repository Contents
+## Repository Contents
 
 | File | Purpose |
 |:---|:---|
@@ -53,7 +53,7 @@ The program will automatically:
 
 ---
 
-## 📈 Features
+## Features
 
 - Calculate distributed parameters \( R', L', C', G' \)
 - Compute lossy and lossless characteristic impedance
@@ -71,13 +71,13 @@ The program will automatically:
 
 ---
 
-## ⚙️ Requirements
+## Requirements
 
 - MATLAB (tested on R2022b or later)
 - No special toolboxes required
 
 ---
 
-## 📜 Example Workflow
+## Example Workflow
 
 After running `Test.m`, select:
