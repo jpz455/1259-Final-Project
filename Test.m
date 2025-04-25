@@ -80,8 +80,8 @@ if choice == 1
     fprintf("\n\tAttenuation constant (dB/m): %f", result.alpha_dB_per_m);
     fprintf("\n\tPhase constant (rad/m): %f", result.beta);
     fprintf("\n\tLossless phase constant (rad/m): %f", result.beta_lossless);
-    fprintf("\n\tPropogation velocity (m/s): %f", result.u_p);
-    fprintf("\n\tLossless propogation velocity (m/s): %f", result.u_p_lossless);
+    fprintf("\n\tPropogation velocity (km/s): %f", result.u_p/1e3);
+    fprintf("\n\tLossless propogation velocity (km/s): %f", result.u_p_lossless/1e3);
     fprintf("\n\tWavelength (m): %f", result.lambda);
     fprintf("\n\tInput power (W): %f", result.input_power);
     fprintf("\n\tSupplied power (W): %f", result.supplied_power);
