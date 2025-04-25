@@ -3,39 +3,39 @@ function property = findMaterial(name)
     % User Entered a String
     if isnan(str2double(name))
 
-        switch name
+        switch lower(name)
             % Conductors
-            case {'CCS', 'Bare Copper Clad Steel'}
+            case {'ccs', 'bare copper clad steel'}
                 property = 2.38e7;
-            case {'TC', 'Tinned Copper'}
+            case {'tc', 'tinned copper'}
                 property = 5.96e7;
-            case {'BC', 'Bare Copper'}
+            case {'bc', 'bare copper'}
                 property = 5.96e7;
-            case {'SC', 'Silver Covered Copper'}
+            case {'sc', 'silver covered copper'}
                 property = 6.00e7;
-            case {'SCCS', 'Silver Covered Copper Clad Steel'}
+            case {'sccs', 'silver covered copper clad steel'}
                 property = 2.38e7;
-            case {'AL', 'Aluminum'}
-                property = 3.538e7
+            case {'al', 'aluminum'}
+                property = 3.538e7;
 
             % Dielectrics
-            case {'PE', 'Polyethylene'}
+            case {'pe', 'polyethylene'}
                 property = 2.26;
-            case {'R', 'Rubber'}
+            case {'r', 'rubber'}
                 property = 2.8;
-            case {'PTFE', 'Polytetrafluoroethylene'}
+            case {'ptfe', 'polytetrafluoroethylene'}
                 property = 2.07;
-            case {'Foam PE', 'Foam Polyethylene'}
+            case {'foam pe', 'foam polyethylene'}
                 property = 1.465;
-            case {'PFA', 'Perfluoroalkoxy Alkane'}
+            case {'pfa', 'perfluoroalkoxy alkane'}
                 property = 2.1;
-            case {'ETFE', 'Ethylene Tetrafluoroethylene'}
+            case {'etfe', 'ethylene tetrafluoroethylene'}
                 property = 2.6;
-            case {'ECTFE', 'Ethylene Clorotrifluoroethylene'}
+            case {'ectfe', 'ethylene clorotrifluoroethylene'}
                 property = 2.5;
-            case {'PVDF', 'Polyvinylidene Fluoride'}
+            case {'pvdf', 'polyvinylidene fluoride'}
                 property = 7.8;
-            case {'FEP', 'Fluorinated Ethylene Propylene'}
+            case {'fep', 'fluorinated ethylene propylene'}
                 property = 2.1;
 
             % Otherwise

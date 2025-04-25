@@ -1,4 +1,4 @@
-%% MAIN %%
+2%% MAIN %%
 
 % Clear Previous Data
 clc
@@ -22,25 +22,70 @@ if choice == 1
     geom.length = input("Enter cable length (m): ");
 
     % Material Properties
-    fprintf("\n\tConductor options:\n\tCCS - Bare Copper Clad Steel\n\tTC - Tinned Copper\n\tBC - Bare Copper\n\tSC - Silver Covered Copper\n\tSilver Covered Copper Clad Steel\n\tAL - Aluminum\n");
-    fprintf("\n\tDielectric options:\n\tPE - Polyethylene\n\tR - Rubber\n\tPTFE - Polytetrafluoroethylene\n\tFoam PE - Foam Polyethylene\n\tPFA - Perfluoroalkoxy Alkane\n\tETFE - Ethylene Tetrafluoroethylene\n\tECTFE - Ethylene Clorotrifluoroethylene\n\tPVDF - Polyvinylidene Fluoride\n\tFEP - Fluorinated Ethylene Propylene\n\n")
+    fprintf("\n\tConductor options:")
+    fprintf("\n\tCCS - Bare Copper Clad Steel\n\tTC - Tinned Copper\n\tBC - Bare Copper")
+    fprintf("\n\tSC - Silver Covered Copper\n\tSilver Covered Copper Clad Steel\n\tAL - Aluminum\n");
+    fprintf("\n\tDielectric options:")
+    fprintf("\n\tPE - Polyethylene\n\tR - Rubber\n\tPTFE - Polytetrafluoroethylene\n\tFoam PE - Foam Polyethylene")
+    fprintf("\n\tPFA - Perfluoroalkoxy Alkane\n\tETFE - Ethylene Tetrafluoroethylene\n\tECTFE - Ethylene Clorotrifluoroethylene")
+    fprintf("\n\tPVDF - Polyvinylidene Fluoride\n\tFEP - Fluorinated Ethylene Propylene\n\n")
+
     material.sigma_ci = findMaterial(input("Enter inner conductor material name (see above) or conductivity value (S/m): ","s"));
-    material.er = findMaterial(input("\nEnter dielectric material name (see above) or relative permittivity value: ","s"));
+    material.er = findMaterial(input("Enter dielectric material name (see above) or relative permittivity value: ","s"));
     material.sigma_d = 0;
-    material.sigma_co = findMaterial(input("\nEnter outer conductor material name (see above) or conducitivity value (S/m): ","s"));
+    material.sigma_co = findMaterial(input("Enter outer conductor material name (see above) or conducitivity value (S/m): ","s"));
 
     % Cable Operation
     operating.f = input("\nEnter cable operating frequency (Hz): ");
     operating.V = input("Enter cable operating voltage (V): ");
 
+    % Hard Code
+    % geom.a = 0.001;                 % inner conductor radius (m)
+    % geom.b = 0.005;                 % dielectric radius (m)
+    % geom.c = 0.010;                 % outer conductor radius (m)
+    % geom.length = 5;                % cable length (m)
+    % material.er = 2.3;              % dieletric permittivity
+    % material.sigma_ci = 5.8e7;      % inner conductor conductivity
+    % material.sigma_co = 5.8e7;       % outer conductor conductivity
+    % material.sigma_d = 0;           % dielectric conductivity
+    % operating.f = 1e9;  % 1 GHz     % operating frequency
+    % operating.V = 1.28;             % operating voltage
+
+    %Display Provided Parameters
+    fprintf("\nProvided Parameters:")
+    fprintf("\n\ta (mm): %f", geom.a*1e3);
+    fprintf("\n\tb (mm): %f", geom.b*1e3);
+    fprintf("\n\tc (mm): %f", geom.c*1e3);
+    fprintf("\n\tCable length (m): %f", geom.length)
+    fprintf("\n\tInner conductor conductivity (S/m): %f", material.sigma_ci);
+    fprintf("\n\tDielectric relative permeability: %f", material.er);
+    fprintf("\n\tOuter conductor conductivity (S/m): %f", material.sigma_co);
+    fprintf("\n\tOperating frequency (Hz): %f", operating.f);
+    fprintf("\n\tOperating voltage (V): %f", operating.V);
+
     % Calculate Results
     result = coaxialDesignTool(geom, material, operating);
 
     % Display Results
-    disp(result.Z0_dist)
-    disp(result.alpha)
-    disp(result.beta)
-    fprintf('Attenuation: %.4f dB/m\n', result.alpha_dB_per_m);
+    fprintf("\n\nCalculated Characteristics:")
+    fprintf("\n\tAC resistance (ohms/m): %f", result.R_per_m);
+    fprintf("\n\tInner DC resistance (ohms/m): %f", result.R_DCi_per_m);
+    fprintf("\n\tOuter DC resistance (ohms/m): %f", result.R_DCo_per_m);
+    fprintf("\n\tCapacitance (pF/m): %f", result.C_per_m*1e12);
+    fprintf("\n\tInductance (nH/m): %f", result.L_per_m*1e9);
+    fprintf("\n\tCharacteristic impedance (ohms): %f + %fi", real(result.Z0_dist), imag(result.Z0_dist));
+    fprintf("\n\tLossless Characteristic impedance (ohms): %f", result.Z0_lossless);
+    fprintf("\n\tPropogation constant: %f + %fi", real(result.gamma), imag(result.gamma));
+    fprintf("\n\tAttenuation constant (Np/m): %f", result.alpha);
+    fprintf("\n\tAttenuation constant (dB/m): %f", result.alpha_dB_per_m);
+    fprintf("\n\tPhase constant (rad/m): %f", result.beta);
+    fprintf("\n\tLossless phase constant (rad/m): %f", result.beta_lossless);
+    fprintf("\n\tPropogation velocity (m/s): %f", result.u_p);
+    fprintf("\n\tLossless propogation velocity (m/s): %f", result.u_p_lossless);
+    fprintf("\n\tWavelength (m): %f", result.lambda);
+    fprintf("\n\tInput power (W): %f", result.input_power);
+    fprintf("\n\tSupplied power (W): %f", result.supplied_power);
+    fprintf("\n\tPower loss: %f", result.power_loss);
 
     % Plot Visualizer
     coax_visualizer(geom, material, operating);
@@ -109,25 +154,19 @@ elseif choice == 2
         % Compare Calculated Results with Catalog
         result = coaxialDesignTool(geom, material, operating);
         fprintf("\nCable: %s\n", char(catalog(i,1).Variables));
-        fprintf("Calculated propogation velocity (km/s): %f\nDatasheet propogation velocity (km/s): %f\n", result.u_p/1000, (catalog(i,9).Variables/100)*299792.458)
-        fprintf("Calculated characteristic impedance (ohms): %f\nDatasheet characteristic impedance (ohms): %f\n", result.Z0_lossless, catalog(i,10).Variables)
-        fprintf("Calculated capacitance (pf/m): %f\nDatasheet capacitance (pf/m): %f\n", result.C_per_m*1e12, catalog(i,11).Variables)
-        fprintf("Calculated inner DC resistance (ohms/m): %f\nDatasheet inner DC resistance (ohms/m): %f\n", result.R_DCi_per_m, catalog(i,14).Variables/304.8)
-        fprintf("Calculated outer DC resistance (ohms/m): %f\nDatasheet outer DC resistance (ohms/m): %f\n", result.R_DCo_per_m, catalog(i,15).Variables/304.8)
+        temp1 = result.u_p/1000; temp2 = (catalog(i,9).Variables/100)*299792.458;
+        fprintf("\tCalculated propogation velocity (km/s): %f\n\tDatasheet propogation velocity (km/s): %f\n\tPercent Error (%%): %f\n\n", temp1, temp2, 100*abs(temp1 - temp2) / temp2)
+        temp1 = result.Z0_lossless; temp2 = catalog(i,10).Variables;
+        fprintf("\tCalculated characteristic impedance (ohms): %f\n\tDatasheet characteristic impedance (ohms): %f\n\tPercent Error (%%): %f\n\n", temp1, temp2, 100*abs(temp1 - temp2) / temp2)
+        temp1 = result.C_per_m*1e12; temp2 = catalog(i,11).Variables;
+        fprintf("\tCalculated capacitance (pf/m): %f\n\tDatasheet capacitance (pf/m): %f\n\tPercent Error (%%): %f\n\n", temp1, temp2, abs(temp1 - temp2) / temp2)
+        temp1 = result.R_DCi_per_m; temp2 = catalog(i,14).Variables/304.8;
+        fprintf("\tCalculated inner DC resistance (ohms/m): %f\n\tDatasheet inner DC resistance (ohms/m): %f\n\tPercent Error (%%): %f\n\n", temp1, temp2, 100*abs(temp1 - temp2) / temp2)
+        temp1 = result.R_DCo_per_m; temp2 = catalog(i,15).Variables/304.8;
+        fprintf("\tCalculated outer DC resistance (ohms/m): %f\n\tDatasheet outer DC resistance (ohms/m): %f\n\tPercent Error (%%): %f\n\n", temp1, temp2, 100*abs(temp1 - temp2) / temp2)
 
     end
     
 
 end
 
-% geom.a = 0.001;                 % inner conductor radius (m)
-% geom.b = 0.005;                 % dielectric radius (m)
-% geom.c =                        % outer conductor radius (m)
-% geom.length = 5;                % cable length (m)
-% material.er = 2.3;              % dieletric permittivity
-% material.tan_delta = 0.0002;    % loss tangent
-% material.sigma_ci = 5.8e7;      % inner conductor conductivity
-% materal.sigma_co =              % outer conductor conductivity
-% material.sigma_d = 0;           % dielectric conductivity
-% operating.f = 1e9;  % 1 GHz     % operating frequency
-% operating.V = 1.28;             % operating voltage
