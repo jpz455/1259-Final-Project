@@ -1,4 +1,4 @@
-Cable Name,a (mm),b (mm),c (mm),Inner Conductor Material,Delectric Material,Outer Conductor Material,Weight (kg/m),Characteristic Impedance (ohms), Capacitance (pF/m),Vmax (RMS),Test Frequency (GHz)
+CableName,a_mm,b_mm,c_mm,InnerConductorMaterial,DelectricMaterial,OuterConductorMaterial,Weight_kg_per_m,CharacteristicImpedance_ohms,Capacitance_pF_per_m,Vmax_RMS,TestFrequency_GHz
 M17/2-RG6,0.724,4.70,6.17,CCS,PE,BC,0.122,66,67.6,3000,3
 M17/6-RG11,1.21,7.24,8.08,TC,PE,BC,0.146,66,67.6,5000,1
 M17/15-RG22,1.16,7.24,8.71,BC,PE,TC,0.200,66,52.5,1000,0.2

@@ -16,24 +16,22 @@ end
 if choice == 1
 
     % Cable Geometry
-    geom.a = input("Inner conductor radius (mm): ")*1e-3;
-    geom.b = input("Dielectric conductor radius (mm): ")*1e-3;
-    geom.c = input("Outer conductor radius (mm): ")*1e-3;
-    geom.length = input("Cable length (m): ");
+    geom.a = input("\nEnter inner conductor radius (mm): ")*1e-3;
+    geom.b = input("Enter dielectric conductor radius (mm): ")*1e-3;
+    geom.c = input("Enter outer conductor radius (mm): ")*1e-3;
+    geom.length = input("Enter cable length (m): ");
 
     % Material Properties
-    fprintf("\nConductor options:\n\t")
-
-    fprintf("\nDielectric options:\n\t")
-
-    material.sigma_ci = findMaterial(input("Inner conductor material (see above): ","s"));
-    material.er = findMaterial(input("Dielectric material (see above): ","s"));
+    fprintf("\n\tConductor options:\n\tCCS - Bare Copper Clad Steel\n\tTC - Tinned Copper\n\tBC - Bare Copper\n\tSC - Silver Covered Copper\n\tSilver Covered Copper Clad Steel\n");
+    fprintf("\n\tDielectric options:\n\tPE - Polyethylene\n\tR - Rubber\n\tPTFE - Polytetrafluoroethylene\n\n")
+    material.sigma_ci = findMaterial(input("Enter inner conductor material name (see above) or conductivity value (S/m): ","s"));
+    material.er = findMaterial(input("\nEnter dielectric material name (see above) or relative permittivity value: ","s"));
     material.sigma_d = 0;
-    material.sigma_co = findMaterial(input("Outer conductor material (see above): ","s"));
+    material.sigma_co = findMaterial(input("\nEnter outer conductor material name (see above) or conducitivity value (S/m): ","s"));
 
     % Cable Operation
-    operating.f = input("Cable operating frequency (Hz): ");
-    operating.V = input("Cable operating voltage (V): ");
+    operating.f = input("\nEnter cable operating frequency (Hz): ");
+    operating.V = input("Enter cable operating voltage (V): ");
 
     % Calculate Results
     result = coaxialDesignTool(geom, material, operating);
@@ -45,7 +43,6 @@ if choice == 1
     fprintf('Attenuation: %.4f dB/m\n', result.alpha_dB_per_m);
 
     % Plot Visualizer
-
     coax_visualizer(geom, material, operating);
 
     % Plot Coaxial Behavior
@@ -113,7 +110,7 @@ elseif choice == 2
         result = coaxialDesignTool(geom, material, operating);
         fprintf("\nCable: %s\n", char(catalog(i,1).Variables));
         %fprintf("Calculated characteristic impedance (pf/m): %f\nDatasheet capacitance (pf/m): %f", result.C_per_m*1e12, catalog(i,10).Variables)
-        fprintf("Calculated capacitance (pf/m): %f\nDatasheet capacitance (pf/m): %f", result.C_per_m*1e12, catalog(i,10).Variables)
+        fprintf("Calculated capacitance (pf/m): %f\nDatasheet capacitance (pf/m): %f\n", result.C_per_m*1e12, catalog(i,10).Variables)
         
     end
     
