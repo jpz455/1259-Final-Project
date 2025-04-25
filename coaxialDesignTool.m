@@ -25,7 +25,8 @@ function result = coaxialDesignTool(geom, material, operating)
     % Distributed parameters
     L = (mu / (2 * pi)) * log(b / a);          % H/m
     C = (2 * pi * eps) / log(b / a);           % F/m
-    R = (1/2*pi)*((1/a)+(1/b))*sqrt((pi*f*mu)/sigma_c);      % Ohms/m
+    %R = (1/2*pi)*((1/a)+(1/b))*sqrt((pi*f*mu)/sigma_c);      % Ohms/m
+    R = (1/ a * sqrt())
     G = (2*pi*sigma_d)/log(b/a);               % S/m
 
     % Propagation constant

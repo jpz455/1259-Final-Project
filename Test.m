@@ -1,16 +1,58 @@
+%% MAIN %%
+
+% Clear Previous Data
 clc
 clear
+close all
 
-geom.a = 0.001;
-geom.b = 0.005;
-geom.length = 5;
-material.er = 2.3;
-material.tan_delta = 0.0002;
-material.sigma_c = 5.8e7;
-material.sigma_d = 0;
-operating.f = 1e9;  % 1 GHz
-operating.V = 1.28;
+% Prompt User and Error Check
+fprintf("Welcome to our Coaxial Cable Design Tool!\nWould you like to:\n\t1. Design your own cable\n\t2. Verify the software")
+choice = input("Please enter 1 or 2: ");
+while choice ~= 1 && choice ~= 2
+    choice = input("Please enter 1 or 2: ");
+end
 
+% Design Choice
+if choice == 1
+
+    % Cable Geometry
+    geom.a = input("Inner conductor radius (mm): ");
+    geom.b = input("Dielectric conductor radius (mm): ");
+    geom.c = input("Outer conductor radius (mm): ");
+    geom.length = input("Cable length (m): ");
+
+    % Material Properties
+        fprintf("\nConductor options:\n\t")
+
+        fprintf("\nDielectric options:\n\t")
+
+    material.sigma_ci = findMaterial(input("Inner conductor material (see above): ","s"));
+    material.er = findMaterial(input("Dielectric material (see above): ","s"));
+    material.sigma_d = 0;
+    material.sigma_co = findMaterial(input("Outer conductor material (see above): ","s"));
+
+    % Cable Operation
+    operating.f = input("Cable operating frequency (Hz): ");
+    operating.V = input("Cable operating voltage (V): ");
+
+% Verification Choice
+elseif choice == 2
+catalog = readtable('Coaxial Cable Catalog.csv')
+catalog(1,2).Variables
+
+geom.a = 0.001;                 % inner conductor radius
+geom.b = 0.005;                 % dielectric radius
+geom.c =                        % outer conductor radius
+geom.length = 5;                % cable length
+material.er = 2.3;              % dieletric permittivity
+%material.tan_delta = 0.0002;    % loss tangent
+material.sigma_ci = 5.8e7;      % inner conductor conductivity
+%materal.sigma_co =              % outer conductor conductivity
+material.sigma_d = 0;           % dielectric conductivity
+operating.f = 1e9;  % 1 GHz     % operating frequency
+operating.V = 1.28;             % operating voltage
+
+end
 result = coaxialDesignTool(geom, material, operating);
 
 disp(result.Z0_dist)
