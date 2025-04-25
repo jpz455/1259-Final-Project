@@ -71,13 +71,6 @@ The program will automatically:
 
 ---
 
-## Requirements
-
-- MATLAB (tested on R2022b or later)
-- No special toolboxes required
-
----
-
 ## Example Workflow
 
 After running `Test.m`, select:
