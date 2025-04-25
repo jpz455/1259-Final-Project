@@ -97,7 +97,7 @@ Outputs:
 
 ## Limitations
 
-- Assumes materials are non-magnetic (relative permeability \(\mu_r = 1\))
+- Assumes materials are non-magnetic (relative permeability mu_r = 1)
 - Assumes negligible dielectric conductivity unless specified
 
 ---
