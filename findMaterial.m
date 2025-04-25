@@ -1,8 +1,10 @@
 function property = findMaterial(name)
     switch name
-        case 1
-        case 2
-        case 3
+        case 'CCS'  %Bare Copper Clad Steel
+            property =
+        case 'BC'   %Bare Copper
+            property =
+        case ''
             otherwise
     end
 end
