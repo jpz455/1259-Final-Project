@@ -9,8 +9,9 @@ function result = coaxialDesignTool(geom, material, operating)
     b = geom.b;  % outer conductor radius (m)
     length = geom.length; % length of coax (m)
     er = material.er;
-    tan_delta = material.tan_delta;
-    sigma_c = material.sigma_c;
+    %tan_delta = material.tan_delta;
+    sigma_ci = material.sigma_ci;
+    sigma_co = material.sigma_co;
     sigma_d = material.sigma_d;
 
     f = operating.f;               % operating frequency (Hz)
@@ -26,7 +27,7 @@ function result = coaxialDesignTool(geom, material, operating)
     L = (mu / (2 * pi)) * log(b / a);          % H/m
     C = (2 * pi * eps) / log(b / a);           % F/m
     %R = (1/2*pi)*((1/a)+(1/b))*sqrt((pi*f*mu)/sigma_c);      % Ohms/m
-    R = (1/ a * sqrt())
+    R = ( (1 / (a * sqrt(sigma_ci))) + (1 / (b * sqrt(sigma_co)))) * (1 / (2*pi*sqrt(2 / (omega*mu0))));  % Ohms/m
     G = (2*pi*sigma_d)/log(b/a);               % S/m
 
     % Propagation constant

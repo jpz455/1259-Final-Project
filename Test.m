@@ -6,7 +6,7 @@ clear
 close all
 
 % Prompt User and Error Check
-fprintf("Welcome to our Coaxial Cable Design Tool!\nWould you like to:\n\t1. Design your own cable\n\t2. Verify the software")
+fprintf("Welcome to our Coaxial Cable Design Tool!\nWould you like to:\n\t1. Design your own cable\n\t2. Verify the software\n")
 choice = input("Please enter 1 or 2: ");
 while choice ~= 1 && choice ~= 2
     choice = input("Please enter 1 or 2: ");
@@ -16,9 +16,9 @@ end
 if choice == 1
 
     % Cable Geometry
-    geom.a = input("Inner conductor radius (mm): ");
-    geom.b = input("Dielectric conductor radius (mm): ");
-    geom.c = input("Outer conductor radius (mm): ");
+    geom.a = input("Inner conductor radius (mm): ")*1e-3;
+    geom.b = input("Dielectric conductor radius (mm): ")*1e-3;
+    geom.c = input("Outer conductor radius (mm): ")*1e-3;
     geom.length = input("Cable length (m): ");
 
     % Material Properties
@@ -35,23 +35,23 @@ if choice == 1
     operating.f = input("Cable operating frequency (Hz): ");
     operating.V = input("Cable operating voltage (V): ");
 
-    %Calculate Results
+    % Calculate Results
     result = coaxialDesignTool(geom, material, operating);
 
+    % Display Results
     disp(result.Z0_dist)
     disp(result.alpha)
     disp(result.beta)
     fprintf('Attenuation: %.4f dB/m\n', result.alpha_dB_per_m);
 
-
+    % Plot Coaxial Behavior
     f_range = logspace(6, 10, 200); % 1 MHz to 10 GHz
     plotCoaxialBehavior(geom, material, operating, f_range);
 
-
-    % input load impedance for smith chart plotting
+    % Input Load Impedance for Smith Chart Plotting
     ZL = 75 + 25j;  
     Z0 = result.Z0_dist;
-    % Normalize and calculate reflection coefficient
+    % Normalize and Calculate Reflection Coefficient
     z = ZL / Z0;
     Gamma = (z - 1) / (z + 1);
 
@@ -66,7 +66,7 @@ if choice == 1
 
 
 
-    % plot input Impedance along tline
+    % Plot Input Impedance Along Cable
     l_vals = linspace(0, result.lambda, 200);
     Zin = zeros(size(l_vals));
 
@@ -82,32 +82,35 @@ if choice == 1
     title('Input Impedance vs Distance Along Line');
     legend('Re(Z_{in})','Im(Z_{in})'); grid on;
 
-
 % Verification Choice
 elseif choice == 2
 
     % Read Coaxial Cable Catalog
-    catalog = readtable('Coaxial Cable Catalog.csv')
+    catalog = readtable('Coaxial Cable Catalog.csv');
 
     % Loop Through Each Cable
     for i = 1:size(catalog, 1)
 
         % Cable Geometry
-        geom.a = catalog(1,2).Variables;
-        geom.b = catalog(1,3).Variables;
-        geom.c = catalog(1,4).Variables;
+        geom.a = catalog(i,2).Variables*1e-3 / 2;
+        geom.b = catalog(i,3).Variables*1e-3 / 2;
+        geom.c = catalog(i,4).Variables*1e-3 / 2;
         geom.length = 1;
-
-        material.sigma_ci = findMaterial(catalog(1,5).Variables);
-        material.er = findMaterial(catalog(1,6).Variables);
+        material.sigma_ci = findMaterial(char(catalog(i,5).Variables));
+        material.er = findMaterial(char(catalog(i,6).Variables));
         material.sigma_d = 0;
-        material.sigma_co = findMaterial(catalog(1,7).Variables);
+        material.sigma_co = findMaterial(char(catalog(i,7).Variables));
 
         % Cable Operation
-        operating.f = input(catalog(1,12).Variables);
+        operating.f = catalog(i,12).Variables*1e9;
         operating.V = 1;
 
-
+        % Compare Calculated Zo and C with Catalog
+        result = coaxialDesignTool(geom, material, operating);
+        fprintf("\nCable: %s\n", char(catalog(i,1).Variables));
+        %fprintf("Calculated characteristic impedance (pf/m): %f\nDatasheet capacitance (pf/m): %f", result.C_per_m*1e12, catalog(i,10).Variables)
+        fprintf("Calculated capacitance (pf/m): %f\nDatasheet capacitance (pf/m): %f", result.C_per_m*1e12, catalog(i,10).Variables)
+        
     end
     
 
