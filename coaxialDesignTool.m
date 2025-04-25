@@ -7,12 +7,14 @@ function result = coaxialDesignTool(geom, material, operating)
     % Inputs
     a = geom.a;  % inner conductor radius (m)
     b = geom.b;  % outer conductor radius (m)
+    length = geom.length; % length of coax (m)
     er = material.er;
     tan_delta = material.tan_delta;
     sigma_c = material.sigma_c;
     sigma_d = material.sigma_d;
 
     f = operating.f;               % operating frequency (Hz)
+    V = operating.V;               % operating voltage (Volts)
     omega = 2 * pi * f;
 
     % Derived constants
@@ -60,4 +62,7 @@ function result = coaxialDesignTool(geom, material, operating)
     result.u_p = u_p;
     result.u_p_lossless = u_p_lossless;
     result.lambda=lambda;
+    result.input_power = V^2/2/abs(result.Z0_dist);
+    result.supplied_power = V^2*exp(-2*result.alpha*length)/2/abs(result.Z0_dist);
+    result.power_loss = result.supplied_power/result.input_power;
 end

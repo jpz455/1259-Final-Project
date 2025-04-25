@@ -1,10 +1,15 @@
+clc
+clear
+
 geom.a = 0.001;
 geom.b = 0.005;
+geom.length = 5;
 material.er = 2.3;
 material.tan_delta = 0.0002;
 material.sigma_c = 5.8e7;
 material.sigma_d = 0;
 operating.f = 1e9;  % 1 GHz
+operating.V = 1.28;
 
 result = coaxialDesignTool(geom, material, operating);
 
@@ -15,7 +20,7 @@ fprintf('Attenuation: %.4f dB/m\n', result.alpha_dB_per_m);
 
 
 f_range = logspace(6, 10, 200); % 1 MHz to 10 GHz
-plotCoaxialBehavior(geom, material, f_range);
+plotCoaxialBehavior(geom, material, operating, f_range);
 
 
 % input load impedance for smith chart plotting
