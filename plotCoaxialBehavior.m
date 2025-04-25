@@ -1,5 +1,10 @@
 %% plotCoaxialBehavior FUNCTION %%
-function plotCoaxialBehavior(geom, material, f_range)
+function plotCoaxialBehavior(geom, material, operating, f_range)
+    result_from_input = coaxialDesignTool(geom,material,operating);
+    input_geom = geom;
+    input_material = material;
+    input_operating = operating;
+
     n = length(f_range);
     alpha_dB = zeros(1, n);
     Z0_real = zeros(1, n);
@@ -40,4 +45,32 @@ function plotCoaxialBehavior(geom, material, f_range)
     title('Wavelength vs Frequency');
     xlabel('Frequency (Hz)');
     ylabel('Wavelength (m)');
+    
+    attenuated_power = zeros(1,1000);
+    lengths = linspace(0, geom.length, 1000);
+    example_waveform = operating.V*sin(2*pi.*lengths*input_operating.f).*exp(-2*result_from_input.alpha.*lengths);
+
+    for i = 1:1000
+        input_geom.length = lengths(i);
+        result = coaxialDesignTool(input_geom, input_material, input_operating);
+        attenuated_power(i) = result.power_loss;
+    end
+
+    % Plot attenuated Power
+    figure; 
+    subplot(2,1,1)
+    grid on;
+    plot(lengths, attenuated_power, "Color", 'k');
+    xlabel("Position along cable, meters")
+    ylabel("P_{out}/P_{in}")
+    subplot(2,1,2)
+    grid on;
+    hold on;
+    plot(lengths, operating.V*attenuated_power, "Color", 'k');
+    plot(lengths, -operating.V*attenuated_power, "Color", 'k');
+    plot(lengths, example_waveform,"Color",'b');
+    xlabel("Position along cable, meters")
+    ylabel("Voltage, Volts")
+
+    sgtitle('Power Attenuation Along Cable Length') 
 end
