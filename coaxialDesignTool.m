@@ -32,9 +32,12 @@ function result = coaxialDesignTool(geom, material, operating)
     R = ( (1 / (a * sqrt(sigma_ci))) + (1 / (b * sqrt(sigma_co))) ) * (1 / (2 * pi * sqrt(2 / (omega*mu))));  % Ohms/m
 
     % DC Resistance (Ohms/m) (inner conductor)
-    %R_DCi = 
+    A = pi * a^2;
+    R_DCi = 1 / (sigma_ci * A);
+
     % DC Resistance (Ohms/m) (outer conductor)
-    %R_DCo
+    A = pi * (c^2 - b^2);
+    R_DCo = 1 / (sigma_co * A);
 
     % Conductance (S/m)
     G = (2*pi*sigma_d) / log(b/a);
@@ -64,6 +67,8 @@ function result = coaxialDesignTool(geom, material, operating)
     result.L_per_m = L;
     result.C_per_m = C;
     result.G_per_m = G;
+    result.R_DCi_per_m = R_DCi;
+    result.R_DCo_per_m = R_DCo;
     result.Z0_dist = Z0_dist;
     result.Z0_lossless = Z0_lossless;
     result.gamma = gamma;

@@ -106,9 +106,10 @@ elseif choice == 2
         operating.f = catalog(i,13).Variables*1e9;
         operating.V = 1;
 
-        % Compare Calculated Zo and C with Catalog
+        % Compare Calculated Results with Catalog
         result = coaxialDesignTool(geom, material, operating);
         fprintf("\nCable: %s\n", char(catalog(i,1).Variables));
+        fprintf("Calculated propogation velocity (km/s): %f\nDatasheet propogation velocity (km/s): %f\n", result.u_p/1000, (catalog(i,9).Variables/100)*299792.458)
         fprintf("Calculated characteristic impedance (ohms): %f\nDatasheet characteristic impedance (ohms): %f\n", result.Z0_lossless, catalog(i,10).Variables)
         fprintf("Calculated capacitance (pf/m): %f\nDatasheet capacitance (pf/m): %f\n", result.C_per_m*1e12, catalog(i,11).Variables)
         
