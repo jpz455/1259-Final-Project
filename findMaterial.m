@@ -15,6 +15,8 @@ function property = findMaterial(name)
                 property = 6.00e7;
             case {'SCCS', 'Silver Covered Copper Clad Steel'}
                 property = 2.38e7;
+            case {'AL', 'Aluminum'}
+                property = 3.538e7
 
             % Dielectrics
             case {'PE', 'Polyethylene'}
@@ -23,6 +25,18 @@ function property = findMaterial(name)
                 property = 2.8;
             case {'PTFE', 'Polytetrafluoroethylene'}
                 property = 2.07;
+            case {'Foam PE', 'Foam Polyethylene'}
+                property = 1.465;
+            case {'PFA', 'Perfluoroalkoxy Alkane'}
+                property = 2.1;
+            case {'ETFE', 'Ethylene Tetrafluoroethylene'}
+                property = 2.6;
+            case {'ECTFE', 'Ethylene Clorotrifluoroethylene'}
+                property = 2.5;
+            case {'PVDF', 'Polyvinylidene Fluoride'}
+                property = 7.8;
+            case {'FEP', 'Fluorinated Ethylene Propylene'}
+                property = 2.1;
 
             % Otherwise
             otherwise

@@ -7,6 +7,7 @@ function result = coaxialDesignTool(geom, material, operating)
     % Inputs
     a = geom.a;                         % inner conductor radius (m)
     b = geom.b;                         % outer conductor radius (m)
+    c = geom.c;
     length = geom.length;               % cable length (m)
     er = material.er;                   % dielectric relative permittivity
     sigma_ci = material.sigma_ci;       % inner conductor conductivity

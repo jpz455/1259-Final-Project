@@ -22,8 +22,8 @@ if choice == 1
     geom.length = input("Enter cable length (m): ");
 
     % Material Properties
-    fprintf("\n\tConductor options:\n\tCCS - Bare Copper Clad Steel\n\tTC - Tinned Copper\n\tBC - Bare Copper\n\tSC - Silver Covered Copper\n\tSilver Covered Copper Clad Steel\n");
-    fprintf("\n\tDielectric options:\n\tPE - Polyethylene\n\tR - Rubber\n\tPTFE - Polytetrafluoroethylene\n\n")
+    fprintf("\n\tConductor options:\n\tCCS - Bare Copper Clad Steel\n\tTC - Tinned Copper\n\tBC - Bare Copper\n\tSC - Silver Covered Copper\n\tSilver Covered Copper Clad Steel\n\tAL - Aluminum\n");
+    fprintf("\n\tDielectric options:\n\tPE - Polyethylene\n\tR - Rubber\n\tPTFE - Polytetrafluoroethylene\n\tFoam PE - Foam Polyethylene\n\tPFA - Perfluoroalkoxy Alkane\n\tETFE - Ethylene Tetrafluoroethylene\n\tECTFE - Ethylene Clorotrifluoroethylene\n\tPVDF - Polyvinylidene Fluoride\n\tFEP - Fluorinated Ethylene Propylene\n\n")
     material.sigma_ci = findMaterial(input("Enter inner conductor material name (see above) or conductivity value (S/m): ","s"));
     material.er = findMaterial(input("\nEnter dielectric material name (see above) or relative permittivity value: ","s"));
     material.sigma_d = 0;
@@ -112,7 +112,9 @@ elseif choice == 2
         fprintf("Calculated propogation velocity (km/s): %f\nDatasheet propogation velocity (km/s): %f\n", result.u_p/1000, (catalog(i,9).Variables/100)*299792.458)
         fprintf("Calculated characteristic impedance (ohms): %f\nDatasheet characteristic impedance (ohms): %f\n", result.Z0_lossless, catalog(i,10).Variables)
         fprintf("Calculated capacitance (pf/m): %f\nDatasheet capacitance (pf/m): %f\n", result.C_per_m*1e12, catalog(i,11).Variables)
-        
+        fprintf("Calculated inner DC resistance (ohms/m): %f\nDatasheet inner DC resistance (ohms/m): %f\n", result.R_DCi_per_m, catalog(i,14).Variables/304.8)
+        fprintf("Calculated outer DC resistance (ohms/m): %f\nDatasheet outer DC resistance (ohms/m): %f\n", result.R_DCo_per_m, catalog(i,15).Variables/304.8)
+
     end
     
 
