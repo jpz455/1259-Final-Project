@@ -93,9 +93,9 @@ elseif choice == 2
     for i = 1:size(catalog, 1)
 
         % Cable Geometry
-        geom.a = catalog(i,2).Variables*1e-3 / 2;
-        geom.b = catalog(i,3).Variables*1e-3 / 2;
-        geom.c = catalog(i,4).Variables*1e-3 / 2;
+        geom.a = (catalog(i,2).Variables*1e-3) / 2;
+        geom.b = (catalog(i,3).Variables*1e-3) / 2;
+        geom.c = (catalog(i,4).Variables*1e-3) / 2;
         geom.length = 1;
         material.sigma_ci = findMaterial(char(catalog(i,5).Variables));
         material.er = findMaterial(char(catalog(i,6).Variables));
@@ -103,14 +103,14 @@ elseif choice == 2
         material.sigma_co = findMaterial(char(catalog(i,7).Variables));
 
         % Cable Operation
-        operating.f = catalog(i,12).Variables*1e9;
+        operating.f = catalog(i,13).Variables*1e9;
         operating.V = 1;
 
         % Compare Calculated Zo and C with Catalog
         result = coaxialDesignTool(geom, material, operating);
         fprintf("\nCable: %s\n", char(catalog(i,1).Variables));
-        %fprintf("Calculated characteristic impedance (pf/m): %f\nDatasheet capacitance (pf/m): %f", result.C_per_m*1e12, catalog(i,10).Variables)
-        fprintf("Calculated capacitance (pf/m): %f\nDatasheet capacitance (pf/m): %f\n", result.C_per_m*1e12, catalog(i,10).Variables)
+        fprintf("Calculated characteristic impedance (ohms): %f\nDatasheet characteristic impedance (ohms): %f\n", result.Z0_lossless, catalog(i,10).Variables)
+        fprintf("Calculated capacitance (pf/m): %f\nDatasheet capacitance (pf/m): %f\n", result.C_per_m*1e12, catalog(i,11).Variables)
         
     end
     
