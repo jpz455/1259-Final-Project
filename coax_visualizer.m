@@ -5,7 +5,7 @@ function coax_visualizer(geom, material, operating)
     conductor_color = [0,0,0];
     dielectric_color = [1,1,1];
 
-    delta = .001;
+    delta = .2*geom.b;
 
     r1 = geom.b+delta;
     r2 = geom.b;
