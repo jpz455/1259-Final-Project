@@ -74,7 +74,9 @@ The program will automatically:
 ## Example Workflow
 
 After running `Test.m`, select:
-Welcome to our Coaxial Cable Design Tool! Would you like to: 1. Design your own cable 2. Verify the software Please enter 1 or 2: 1
+
+`Welcome to our Coaxial Cable Design Tool! Would you like to: 1. Design your own cable 2. Verify the software Please enter 1 or 2: 1`
+
 
 Sample user inputs:
 - Inner conductor radius = `1 mm`
