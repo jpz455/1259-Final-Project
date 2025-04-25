@@ -74,3 +74,39 @@ The program will automatically:
 ## Example Workflow
 
 After running `Test.m`, select:
+Welcome to our Coaxial Cable Design Tool! Would you like to: 1. Design your own cable 2. Verify the software Please enter 1 or 2: 1
+
+Sample user inputs:
+- Inner conductor radius = `1 mm`
+- Dielectric outer radius = `5 mm`
+- Outer conductor radius = `10 mm`
+- Cable length = `5 m`
+- Materials: Bare Copper (inner and outer), Polyethylene (dielectric)
+- Operating frequency = `1 GHz`
+- Operating voltage = `1.28 V`
+
+Outputs:
+- Distributed parameters (R', L', C', G')
+- Characteristic impedance (lossy and lossless)
+- Wavelength and propagation constants
+- Power attenuation and voltage plots
+- Smith Chart impedance visualization
+- Shunt capacitor value for matching a given load impedance
+
+---
+
+## Limitations
+
+- Assumes materials are non-magnetic (relative permeability \(\mu_r = 1\))
+- Assumes negligible dielectric conductivity unless specified
+
+---
+
+## References
+
+- ECE 1259 Lecture Notes
+- Material and cable properties adapted from standard engineering datasheets
+
+---
+
+
